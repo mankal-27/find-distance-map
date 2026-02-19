@@ -71,8 +71,8 @@ export default function MapDisplay({ source, destination, onRouteFound }) {
 
                 if (onRouteFound) {
                     onRouteFound({
-                        distance: (routeData.distance / 1609.34).toFixed(1) + ' miles',
-                        duration: Math.round(routeData.duration / 60) + ' mins',
+                        distance: (routeData.distance / 1000).toFixed(1) + ' km',
+                        duration: (routeData.duration / 3600).toFixed(1) + ' hrs',
                         startAddress: source,
                         endAddress: destination
                     });

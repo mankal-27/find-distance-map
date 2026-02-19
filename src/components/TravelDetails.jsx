@@ -1,5 +1,5 @@
 import React from 'react';
-import { Car, Footprints, Bike, Bus, Clock, Ruler } from 'lucide-react';
+import { Car, Footprints, Bike, Bus, Clock, Ruler, Plane, Train } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function TravelDetails({ routeData, source, destination }) {
@@ -11,9 +11,9 @@ export default function TravelDetails({ routeData, source, destination }) {
 
     const alternatives = [
         { mode: 'Driving', icon: <Car size={18} />, time: duration, color: '#6366f1' },
-        { mode: 'Walking', icon: <Footprints size={18} />, time: 'Approx. 5x Driving', color: '#10b981' },
-        { mode: 'Cycling', icon: <Bike size={18} />, time: 'Approx. 2x Driving', color: '#f59e0b' },
-        { mode: 'Transit', icon: <Bus size={18} />, time: 'Check Local Schedule', color: '#ec4899' },
+        { mode: 'Bus', icon: <Bus size={18} />, time: routeData ? (parseFloat(duration) * 1.5).toFixed(1) + ' hrs' : 'Calculating...', color: '#ec4899' },
+        { mode: 'Train', icon: <Train size={18} />, time: routeData ? (parseFloat(duration) * 0.8).toFixed(1) + ' hrs' : 'Check Schedule', color: '#10b981' },
+        { mode: 'Flight', icon: <Plane size={18} />, time: routeData ? (parseFloat(distance) > 500 ? (parseFloat(distance) / 800 + 2).toFixed(1) + ' hrs' : 'Too short for flight') : 'Calculating...', color: '#f59e0b' },
     ];
 
     return (
